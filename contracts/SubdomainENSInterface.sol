@@ -1,21 +1,23 @@
-//SPDX-License-Identifier: UNLICENSED
+// SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.22;
 
+/// @title Subdomain ENS Interface
+/// @notice This interface defines the functions for managing ENS subdomains.
 interface SubdomainENSInterface {
 
-    // Logged when the owner of a node assigns a new owner to a subnode.
+    /// @notice Logged when the owner of a node assigns a new owner to a subnode.
     event NewOwner(bytes32 indexed node, bytes32 indexed label, address owner);
 
-    // Logged when the owner of a node transfers ownership to a new account.
+    /// @notice Logged when the owner of a node transfers ownership to a new account.
     event Transfer(bytes32 indexed node, address owner);
 
-    // Logged when the resolver for a node changes.
+    /// @notice Logged when the resolver for a node changes.
     event NewResolver(bytes32 indexed node, address resolver);
 
-    // Logged when the TTL of a node changes
+    /// @notice Logged when the TTL of a node changes.
     event NewTTL(bytes32 indexed node, uint64 ttl);
 
-    // Logged when an operator is added or removed.
+    /// @notice Logged when an operator is added or removed.
     event ApprovalForAll(address indexed owner, address indexed operator, bool approved);
 
     function setRecord(bytes32 node, address owner, address resolver, uint64 ttl) external;
